@@ -1,39 +1,34 @@
 ---
 title: "Self-Assessment"
-date: 2024-01-01
+date: 2026-07-30
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+During my participation in **AWS FCAJ** from **7 June 2026 to 30 July 2026**, I studied and worked on projects related to the AWS platform. This experience strengthened my cloud-computing knowledge and enabled me to apply AWS services in hands-on exercises and projects.
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+I learned and practiced services including IAM, EC2, S3, CloudFront, Lambda, VPC, Security Groups, ECR, ECS Fargate, RDS, Application Load Balancer, Secrets Manager, CloudWatch, AWS CLI, and Lightsail. Through this work, I improved my ability to research documentation, configure resources, deploy applications, monitor systems, and work with cloud architectures.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+In terms of work ethic, I took initiative in learning, completed planned activities, and seriously received feedback to improve my technical skills.
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
-
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+| No. | Criteria | Description | Good | Fair | Average |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Professional knowledge & skills** | Understands and applies AWS knowledge in exercises and projects. | ✅ | ☐ | ☐ |
+| 2 | **Ability to learn** | Actively acquires new services, tools, and knowledge. | ✅ | ☐ | ☐ |
+| 3 | **Proactiveness** | Independently researches documentation and handles assigned tasks. | ✅ | ☐ | ☐ |
+| 4 | **Sense of responsibility** | Completes planned learning activities and work. | ✅ | ☐ | ☐ |
+| 5 | **Discipline** | Follows the learning plan and implementation process. | ✅ | ☐ | ☐ |
+| 6 | **Progressive mindset** | Is willing to receive feedback and improve. | ✅ | ☐ | ☐ |
+| 7 | **Communication** | Communicates and reports progress clearly. | ☐ | ✅ | ☐ |
+| 8 | **Teamwork** | Participates in learning, discussion, and collaboration on projects. | ✅ | ☐ | ☐ |
+| 9 | **Professional conduct** | Respects the learning environment and other members. | ✅ | ☐ | ☐ |
+| 10 | **Problem-solving skills** | Analyzes issues, researches documentation, and proposes solutions. | ☐ | ✅ | ☐ |
+| 11 | **Contribution to project/team** | Completes practical exercises and assigned project work. | ✅ | ☐ | ☐ |
+| 12 | **Overall** | Overall evaluation of participation in AWS FCAJ. | ✅ | ☐ | ☐ |
 
 ### Needs Improvement
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+* Further develop AWS architecture-design skills and the ability to deploy complete projects.
+* Strengthen troubleshooting skills, especially for network configuration, access control, and application operations.
+* Improve communication, technical-solution presentation, and project documentation skills.

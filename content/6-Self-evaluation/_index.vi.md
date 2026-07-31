@@ -1,40 +1,34 @@
 ---
 title: "Tự đánh giá"
-date: 2024-01-01
+date: 2026-07-30
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+Trong thời gian tham gia tại **AWS FCAJ** từ **07/06/2026 đến 30/07/2026**, em đã học tập và thực hiện các dự án liên quan đến nền tảng AWS. Quá trình này giúp em củng cố kiến thức về cloud computing và áp dụng các dịch vụ AWS vào các bài thực hành, dự án.
 
-Trong suốt thời gian thực tập tại **[Tên công ty/tổ chức]** từ **[ngày bắt đầu]** đến **[ngày kết thúc]**, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường làm việc thực tế.  
-Tôi đã tham gia **[mô tả ngắn gọn dự án hoặc công việc chính]**, qua đó cải thiện kỹ năng **[liệt kê kỹ năng: lập trình, phân tích, viết báo cáo, giao tiếp…]**.  
+Em đã tìm hiểu và thực hành các dịch vụ như IAM, EC2, S3, CloudFront, Lambda, VPC, Security Group, ECR, ECS Fargate, RDS, Application Load Balancer, Secrets Manager, CloudWatch, AWS CLI và Lightsail. Qua đó, em cải thiện kỹ năng tìm hiểu tài liệu, cấu hình tài nguyên, triển khai ứng dụng, theo dõi hệ thống và làm việc với kiến trúc cloud.
 
-Về tác phong, tôi luôn cố gắng hoàn thành tốt nhiệm vụ, tuân thủ nội quy, và tích cực trao đổi với đồng nghiệp để nâng cao hiệu quả công việc.
+Về tác phong, em chủ động học hỏi, hoàn thành các nội dung theo kế hoạch và nghiêm túc tiếp nhận góp ý để cải thiện kỹ năng chuyên môn.
 
-Để phản ánh một cách khách quan quá trình thực tập, tôi xin tự đánh giá bản thân dựa trên các tiêu chí dưới đây:
-
-
-| STT | Tiêu chí                            | Mô tả                                                                                            | Tốt | Khá | Trung bình |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | --- | --- | ---------- |
-| 1   | **Kiến thức và kỹ năng chuyên môn** | Hiểu biết về ngành, áp dụng kiến thức vào thực tế, kỹ năng sử dụng công cụ, chất lượng công việc | ✅   | ☐   | ☐          |
-| 2   | **Khả năng học hỏi**                | Tiếp thu kiến thức mới, học hỏi nhanh                                                            | ☐   | ✅   | ☐          |
-| 3   | **Chủ động**                        | Tự tìm hiểu, nhận nhiệm vụ mà không chờ chỉ dẫn                                                  | ✅   | ☐   | ☐          |
-| 4   | **Tinh thần trách nhiệm**           | Hoàn thành công việc đúng hạn, đảm bảo chất lượng                                                | ✅   | ☐   | ☐          |
-| 5   | **Kỷ luật**                         | Tuân thủ giờ giấc, nội quy, quy trình làm việc                                                   | ☐   | ☐   | ✅          |
-| 6   | **Tính cầu tiến**                   | Sẵn sàng nhận feedback và cải thiện bản thân                                                     | ☐   | ✅   | ☐          |
-| 7   | **Giao tiếp**                       | Trình bày ý tưởng, báo cáo công việc rõ ràng                                                     | ☐   | ✅   | ☐          |
-| 8   | **Hợp tác nhóm**                    | Làm việc hiệu quả với đồng nghiệp, tham gia nhóm                                                 | ✅   | ☐   | ☐          |
-| 9   | **Ứng xử chuyên nghiệp**            | Tôn trọng đồng nghiệp, đối tác, môi trường làm việc                                              | ✅   | ☐   | ☐          |
-| 10  | **Tư duy giải quyết vấn đề**        | Nhận diện vấn đề, đề xuất giải pháp, sáng tạo                                                    | ☐   | ✅   | ☐          |
-| 11  | **Đóng góp vào dự án/tổ chức**      | Hiệu quả công việc, sáng kiến cải tiến, ghi nhận từ team                                         | ✅   | ☐   | ☐          |
-| 12  | **Tổng thể**                        | Đánh giá chung về toàn bộ quá trình thực tập                                                     | ✅   | ☐   | ☐          |
+| STT | Tiêu chí | Mô tả | Tốt | Khá | Trung bình |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Kiến thức và kỹ năng chuyên môn** | Hiểu và áp dụng kiến thức AWS vào bài thực hành, dự án. | ✅ | ☐ | ☐ |
+| 2 | **Khả năng học hỏi** | Chủ động tiếp thu dịch vụ, công cụ và kiến thức mới. | ✅ | ☐ | ☐ |
+| 3 | **Chủ động** | Tự tìm hiểu tài liệu và xử lý các nhiệm vụ được giao. | ✅ | ☐ | ☐ |
+| 4 | **Tinh thần trách nhiệm** | Hoàn thành nội dung học tập và công việc theo kế hoạch. | ✅ | ☐ | ☐ |
+| 5 | **Kỷ luật** | Tuân thủ kế hoạch học tập và quy trình thực hiện. | ✅ | ☐ | ☐ |
+| 6 | **Tính cầu tiến** | Sẵn sàng tiếp nhận góp ý và cải thiện bản thân. | ✅ | ☐ | ☐ |
+| 7 | **Giao tiếp** | Trao đổi và báo cáo tiến độ công việc rõ ràng. | ☐ | ✅ | ☐ |
+| 8 | **Hợp tác nhóm** | Tham gia học tập, trao đổi và phối hợp trong các dự án. | ✅ | ☐ | ☐ |
+| 9 | **Ứng xử chuyên nghiệp** | Tôn trọng môi trường học tập và các thành viên. | ✅ | ☐ | ☐ |
+| 10 | **Tư duy giải quyết vấn đề** | Phân tích lỗi, tìm tài liệu và đề xuất hướng xử lý. | ☐ | ✅ | ☐ |
+| 11 | **Đóng góp vào dự án/tổ chức** | Hoàn thành các bài thực hành và phần việc trong dự án. | ✅ | ☐ | ☐ |
+| 12 | **Tổng thể** | Đánh giá chung về quá trình tham gia AWS FCAJ. | ✅ | ☐ | ☐ |
 
 ### Cần cải thiện
 
-* Nâng cao tính kỹ luật, chấp hành nghiêm chỉnh nội quy của công ty hoặc bất kỳ trong một tổ chức nào
-* Cải thiện trong cách tư duy giải quyết vấn đề
-* Học cách giao tiếp tốt hơn trong giao tiếp hằng ngày và trong công việc, xử lý tình huống
+* Tiếp tục nâng cao kỹ năng thiết kế kiến trúc AWS và triển khai dự án hoàn chỉnh.
+* Rèn luyện tư duy xử lý sự cố, đặc biệt trong cấu hình mạng, quyền truy cập và vận hành ứng dụng.
+* Cải thiện kỹ năng giao tiếp, trình bày giải pháp kỹ thuật và viết tài liệu dự án.
