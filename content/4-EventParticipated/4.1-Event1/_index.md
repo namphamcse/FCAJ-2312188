@@ -58,4 +58,10 @@ The event helped me connect what I am learning with the real expectations of the
 
 ### Event Photos
 
-<!-- Add event photos here. -->
+![AWS Study Tour 2026 group photo](/images/event.jpg)
+
+*Group photo at AWS Study Tour 2026.*
+
+![Speaker session at AWS Study Tour 2026](/images/eventt.jpg)
+
+*A speaker session during AWS Study Tour 2026.*

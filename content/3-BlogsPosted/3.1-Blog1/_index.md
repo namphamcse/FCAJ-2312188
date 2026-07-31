@@ -1,31 +1,44 @@
 ---
-title: "Blog 1"
-date: 2024-01-01
+title: "Three lesser-known AWS details that can cause incidents"
+date: 2026-07-30
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+# Three lesser-known AWS details that can cause incidents
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+Instead of discussing broad concepts, this article highlights three small AWS details. They rarely appear on lecture slides, yet they can create unnecessary costs or lead to days of debugging.
 
-Key points to know:
+### 1. “Invisible” S3 files: you still pay, but cannot see them
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+When an application uploads a large file to S3 and the connection drops midway, the multipart upload does not complete.
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+**The overlooked detail:** Data parts that were transferred before the failure remain stored in S3 and continue to incur storage charges. These incomplete parts do not appear when viewing the bucket in the S3 Console or when using the standard `aws s3 ls` command. If many large uploads fail, the hidden cost can become significant.
 
-...Image...
+**How to handle it:** Create an S3 Lifecycle Rule that deletes incomplete multipart uploads after 1–2 days. This automatically removes data parts that are no longer needed.
 
-...Link...
+### 2. The IMDSv2 hop-limit trap for containerized applications
 
-...Guide...
+Moving from IMDSv1 to IMDSv2 is an important security practice that reduces the risk of exposing IAM role credentials on EC2. However, an application running in a Docker container on an EC2 instance can lose access to the EC2 Instance Metadata Service, resulting in authentication errors from the AWS SDK.
+
+**Why it happens:** IMDSv2 controls the hop limit of metadata responses. A request from a container can cross a Docker network bridge or virtual interface before reaching the metadata address, `169.254.169.254`. If the EC2 instance's `HttpPutResponseHopLimit` is only `1`, the response may not be able to return to the application in the container.
+
+**How to handle it:** For a containerized workload that requires instance metadata, increase the EC2 instance's Metadata Response Hop Limit from `1` to `2`, while granting only the IAM permissions required by the instance role.
+
+### 3. The AWS Lambda `/tmp` directory is not always clean
+
+It is easy to assume that every Lambda invocation runs in a new environment. In reality, AWS can reuse an execution environment for later invocations through warm starts. A file written to `/tmp` during one invocation can therefore remain for the next one.
+
+**Consequences:**
+
+* **Security risk:** Temporary files that contain sensitive data should be removed after processing so they are not used incorrectly by later requests.
+* **Disk-full risk:** Accumulated temporary files can exhaust ephemeral storage and cause unpredictable `No space left on device` errors.
+
+**How to handle it:** Remove temporary files proactively after processing, for example with a `try...finally` block. Do not depend on Lambda creating a new execution environment.
+
+These details are small, but they can directly affect cost, security, and system reliability. Checking them early helps keep systems running smoothly and avoids unnecessary hidden incidents.
+
+### Blog Link
+
+[View the blog post on Facebook](https://www.facebook.com/share/p/1BVqPJMVwu/)
