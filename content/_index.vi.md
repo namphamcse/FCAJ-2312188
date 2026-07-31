@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 07/06/2026 đến ngày 30/7/2026
 
-![Ảnh đại diện của bạn](/images/avatar.jpg)
+![Ảnh đại diện của bạn](/FCAJ-2312188/images/avatar.jpg?featherlight=false)
 
 
 
