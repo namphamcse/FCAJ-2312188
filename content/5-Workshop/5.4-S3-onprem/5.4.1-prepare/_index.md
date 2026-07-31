@@ -16,8 +16,17 @@ The ALB is placed in public subnets to receive Internet traffic. ECS Fargate tas
 * **ECS SG:** allows the application port only from the ALB SG.
 * **RDS SG:** allows TCP `5432` only from the ECS SG.
 
+Use security-group references rather than CIDR ranges for the ECS and RDS inbound rules. The deployed application uses ALB listener ports `80` and `443`, backend port `8080`, and PostgreSQL port `5432`.
+
 ![ALB security group](/FCAJ-2312188/images/5-Workshop/alb_sg_inbound_rules.jpg?featherlight=false)
+*Figure 1. Inbound rules for the Application Load Balancer security group.*
 
 ![ECS security group](/FCAJ-2312188/images/5-Workshop/ecs_sg_inbound_rules.jpg?featherlight=false)
+*Figure 2. Inbound rules for the ECS service security group.*
 
 ![RDS security group](/FCAJ-2312188/images/5-Workshop/rds_sg_inbound_rules.jpg?featherlight=false)
+*Figure 3. Inbound rules for the RDS PostgreSQL security group.*
+
+#### Verify the network boundary
+
+Confirm that the ECS task has no public IP, the ALB is associated with both public subnets, and the RDS instance is associated with private subnets. An external client must not be able to connect directly to the ECS container or PostgreSQL database.

@@ -18,6 +18,16 @@ pre: " <b> 5.1. </b> "
 
 1. Người dùng truy cập frontend qua CloudFront.
 2. CloudFront lấy các file tĩnh từ S3 origin.
-3. Frontend gọi API đến ALB.
-4. ALB chuyển request đến ECS Fargate task trong private subnet.
-5. Backend đọc hoặc ghi dữ liệu vào RDS PostgreSQL.
+3. Frontend gọi `/api/*` qua CloudFront.
+4. CloudFront chuyển tiếp API request đến ALB.
+5. ALB chuyển request đến ECS Fargate task trong private subnet.
+6. Backend đọc hoặc ghi dữ liệu vào RDS PostgreSQL.
+
+#### Luồng build và triển khai
+
+1. Build backend container image và push image có version lên Amazon ECR.
+2. Tạo revision mới của ECS task definition sử dụng image đó.
+3. Cập nhật ECS service và chờ target của ALB trở thành healthy.
+4. Build các static file của frontend, upload lên S3 và tạo CloudFront invalidation khi cần làm mới file đã được cache.
+
+Mỗi lần phát hành backend sử dụng image và task-definition revision mới; không chỉnh sửa file ứng dụng bên trong Fargate task đang chạy.

@@ -18,4 +18,6 @@ Create an internet-facing ALB across two public subnets. Create an HTTP or HTTPS
 2. Call the API through the ALB DNS name and check the backend response.
 3. Check ECS task logs if a health check or request fails.
 
-The ALB is the backend entry point; the frontend should use the ALB DNS name or a custom API domain to call the API.
+The ALB is the backend entry point. Direct ALB calls are useful for testing; the public frontend calls `/api/*` through the CloudFront behavior configured in section 5.3.2.
+
+If a target is unhealthy, first confirm the health-check path and port, then inspect the ECS task stopped reason and application logs. This separates load-balancer routing issues from container startup or database-connection issues.

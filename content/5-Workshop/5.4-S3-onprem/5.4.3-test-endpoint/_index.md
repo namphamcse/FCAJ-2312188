@@ -13,3 +13,9 @@ Create an RDS PostgreSQL instance in a DB subnet group that uses private subnets
 ![RDS PostgreSQL instance](/FCAJ-2312188/images/5-Workshop/rds.jpg?featherlight=false)
 
 The backend can connect to the database only on port `5432` from an ECS task. Do not hard-code database credentials in source code.
+
+#### Validate the database connection
+
+Pass the RDS endpoint, port, database name, username, and password to the backend at deployment time. After the ECS task starts, verify application logs and API responses. A connection timeout usually indicates a network or security-group issue, while an authentication error usually indicates an incorrect database name or credential.
+
+Run the required database migrations and test an API operation that reads and writes data before considering the backend deployment complete.

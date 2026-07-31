@@ -11,7 +11,9 @@ pre: " <b> 5.3.2. </b> "
 1. Tạo CloudFront distribution và chọn S3 bucket làm origin.
 2. Dùng Origin Access Control để CloudFront có quyền đọc object trong S3 bucket private.
 3. Đặt default root object là `index.html`.
-4. Sau khi distribution được deploy, truy cập frontend qua CloudFront domain name.
+4. Thêm ALB làm origin thứ hai và tạo behavior `/api/*` để chuyển tiếp các API method, header và query string cần thiết.
+5. Cấu hình SPA fallback để các client-side route trả về `index.html` khi phù hợp.
+6. Sau khi distribution được deploy, truy cập frontend qua CloudFront domain name.
 
 Khi frontend được cập nhật, tạo invalidation để xóa cache của các file cần phát hành lại.
 
