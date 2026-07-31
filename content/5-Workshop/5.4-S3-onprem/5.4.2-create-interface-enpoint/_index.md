@@ -1,43 +1,21 @@
 ---
-title : "Create an S3 Interface endpoint"
-date : 2024-01-01
-weight : 2
-chapter : false
-pre : " <b> 5.4.2 </b> "
+title: "Create the ECR Repository and ECS Fargate Service"
+date: 2026-07-30
+weight: 2
+chapter: false
+pre: " <b> 5.4.2. </b> "
 ---
 
-In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
+#### Push the backend image to ECR
 
-1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
+1. Create a private ECR repository.
+2. Build the backend Docker image.
+3. Authenticate the Docker client with ECR, tag the image, and push it to the repository.
 
-2. In Create endpoint console:
-+ Name the interface endpoint
-+ In Service category, choose **aws services** 
+![ECR backend image](/FCAJ-2312188/images/5-Workshop/ecr_image.jpg?featherlight=false)
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+#### Create the ECS Fargate service
 
-3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
+Create an ECS cluster and task definition that uses the ECR image. Configure CPU, memory, the container port, private subnets, and the ECS security group. Then create the service with the required number of tasks and attach the ALB target group.
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
-
-4. For VPC, select VPC Cloud from the drop-down.
-{{% notice warning %}}
-Make sure to choose "VPC Cloud" and not "VPC On-prem"
-{{% /notice %}}
-+ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
-
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
-
-5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
-
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
-
-6. For Security group, choose SGforS3Endpoint:
-
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
-
-7. Keep the default policy - full access and click Create endpoint
-
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
-
-Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.
+![ECS cluster and service](/FCAJ-2312188/images/5-Workshop/ecs_cluster_service.jpg?featherlight=false)

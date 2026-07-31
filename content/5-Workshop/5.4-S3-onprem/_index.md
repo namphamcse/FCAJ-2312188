@@ -1,20 +1,18 @@
 ---
-title : "Access S3 from on-premises"
-date : 2024-01-01
-weight : 4
-chapter : false
-pre : " <b> 5.4. </b> "
+title: "Deploy the Backend with ALB, ECS Fargate, and RDS PostgreSQL"
+date: 2026-07-30
+weight: 4
+chapter: false
+pre: " <b> 5.4. </b> "
 ---
 
 #### Overview
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+The backend is packaged as a Docker image, stored in Amazon ECR, and run by an ECS Fargate service. The ALB runs in public subnets to receive API requests and sends them to ECS tasks in private subnets. The backend connects to RDS PostgreSQL on port `5432`.
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
+#### Contents
 
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
-
-
-
+1. [Prepare the network and security groups](5.4.1-prepare/)
+2. [Create the ECR repository and ECS Fargate service](5.4.2-create-interface-enpoint/)
+3. [Create RDS PostgreSQL](5.4.3-test-endpoint/)
+4. [Configure the ALB and test the backend](5.4.4-dns-simulation/)
