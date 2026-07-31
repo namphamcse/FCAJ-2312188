@@ -75,10 +75,11 @@ CloudWatch is used to review ECS task starts and stops, Spring Boot errors, data
 #### 6. Implementation plan
 
 1. Create the VPC, subnets, Internet Gateway, NAT Gateways, route tables, and security groups.
-2. Create the RDS PostgreSQL instance and private DB subnet group.
-3. Build the backend image, push it to ECR, and create the ECS Fargate service with ALB health checks.
-4. Build the React/Vite frontend, upload the `dist` artifacts to S3, and configure CloudFront with the ALB `/api/*` behavior.
-5. Configure CloudWatch logging, validate payment and API flows, then review cost and resource usage.
+2. Create the ECS task execution role and task role with least-privilege access.
+3. Create the RDS PostgreSQL instance and private DB subnet group.
+4. Build the backend image, push it to ECR, and create the ECS Fargate service with ALB health checks.
+5. Build the React/Vite frontend, upload the `dist` artifacts to S3, and configure CloudFront with the ALB `/api/*` behavior.
+6. Configure CloudWatch logging, validate payment and API flows, then review cost and resource usage.
 
 Each backend release produces a new ECR image and ECS task-definition revision. The ECS service performs a health-checked rollout rather than changing files inside a running container.
 

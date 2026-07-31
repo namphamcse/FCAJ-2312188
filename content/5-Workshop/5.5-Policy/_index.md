@@ -1,19 +1,10 @@
 ---
-title: "IAM, CloudWatch, Payment Flow, and Validation"
+title: "CloudWatch, Payment Flow, and Validation"
 date: 2026-07-30
 weight: 5
 chapter: false
 pre: " <b> 5.5. </b> "
 ---
-
-#### IAM roles for ECS
-
-Use separate roles for the Fargate workload:
-
-* **Task execution role:** pulls the backend image from ECR and delivers container logs to CloudWatch.
-* **Task role:** contains only permissions required by the application code inside the container.
-
-Keep these roles separate and do not place static AWS access keys inside the container.
 
 #### CloudWatch Logs
 

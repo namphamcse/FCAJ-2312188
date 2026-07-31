@@ -66,3 +66,12 @@ ALB vẫn là thành phần public duy nhất nhận inbound traffic. ECS task v
 #### Kiểm tra trước khi triển khai
 
 Trước khi triển khai ứng dụng, kiểm tra public subnet route qua Internet Gateway, private subnet có NAT route cần thiết và traffic path được giới hạn theo luồng ALB → ECS → RDS.
+
+#### IAM role cho ECS
+
+Tạo hai role riêng trước khi tạo ECS task definition:
+
+* **Task execution role:** pull backend image từ ECR và gửi container log đến CloudWatch.
+* **Task role:** chỉ chứa quyền mà application code bên trong container cần sử dụng.
+
+Giữ hai role này tách biệt và không đặt static AWS access key bên trong container.

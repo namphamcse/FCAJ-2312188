@@ -75,10 +75,11 @@ CloudWatch được sử dụng để theo dõi ECS task start và stop, Spring 
 #### 6. Kế hoạch triển khai
 
 1. Tạo VPC, subnet, Internet Gateway, NAT Gateway, route table và security group.
-2. Tạo RDS PostgreSQL instance cùng private DB subnet group.
-3. Build backend image, push lên ECR và tạo ECS Fargate service với ALB health check.
-4. Build React/Vite frontend, upload `dist` artifact lên S3 và cấu hình CloudFront với ALB behavior `/api/*`.
-5. Cấu hình CloudWatch logging, xác thực payment cùng API flow, sau đó review chi phí và resource usage.
+2. Tạo ECS task execution role và task role với least-privilege access.
+3. Tạo RDS PostgreSQL instance cùng private DB subnet group.
+4. Build backend image, push lên ECR và tạo ECS Fargate service với ALB health check.
+5. Build React/Vite frontend, upload `dist` artifact lên S3 và cấu hình CloudFront với ALB behavior `/api/*`.
+6. Cấu hình CloudWatch logging, xác thực payment cùng API flow, sau đó review chi phí và resource usage.
 
 Mỗi lần phát hành backend tạo ECR image và ECS task-definition revision mới. ECS service rollout có health check thay vì thay đổi file trong container đang chạy.
 

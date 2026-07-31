@@ -14,5 +14,5 @@ This workshop deploys a cloud-native web application on AWS. The frontend is sto
 2. [Prepare the VPC and security groups](5.2-Prerequiste/)
 3. [Deploy the frontend with S3 and CloudFront](5.3-S3-vpc/)
 4. [Deploy the backend with ALB, ECS Fargate, and RDS PostgreSQL](5.4-S3-onprem/)
-5. [IAM, CloudWatch, payment flow, and validation](5.5-Policy/)
+5. [CloudWatch, payment flow, and validation](5.5-Policy/)
 6. [Resource cleanup](5.6-Cleanup/)

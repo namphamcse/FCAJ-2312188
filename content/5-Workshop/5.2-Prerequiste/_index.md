@@ -66,3 +66,12 @@ The ALB remains the only inbound public component. ECS tasks and RDS stay privat
 #### Checkpoint
 
 Before deploying the application, confirm that public subnets route through the Internet Gateway, private subnets have the required NAT route, and the traffic path is restricted to ALB → ECS → RDS.
+
+#### IAM roles for ECS
+
+Create two separate roles before creating the ECS task definition:
+
+* **Task execution role:** pulls the backend image from ECR and delivers container logs to CloudWatch.
+* **Task role:** contains only permissions required by the application code inside the container.
+
+Keep these roles separate and do not place static AWS access keys inside the container.
