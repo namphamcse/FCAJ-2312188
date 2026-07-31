@@ -1,12 +1,10 @@
 ---
-title: "Những “cái bẫy” ẩn kỹ trong AWS"
+title: "NAT Gateway, Glacier, PassRole và EBS: 4 cái bẫy AWS"
 date: 2026-07-30
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-
-# Những “cái bẫy” ẩn kỹ trong AWS mà tài liệu chính thức ít khi cảnh báo
 
 Khi mới tiếp cận AWS, em thường gặp các khái niệm quen thuộc như EC2, S3, RDS và những kiến trúc chuẩn trên slide. Chỉ khi vận hành hệ thống thực tế, em mới nhận ra có những góc khuất ít được đề cập trong các khóa học cơ bản, nhưng có thể dẫn đến chi phí lớn hoặc sự cố cần xử lý vào thời điểm không mong muốn.
 

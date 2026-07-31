@@ -1,12 +1,10 @@
 ---
-title: "Three lesser-known AWS details that can cause incidents"
+title: "S3, IMDSv2, and Lambda: three AWS operational issues to avoid"
 date: 2026-07-30
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-
-# Three lesser-known AWS details that can cause incidents
 
 Instead of discussing broad concepts, this article highlights three small AWS details. They rarely appear on lecture slides, yet they can create unnecessary costs or lead to days of debugging.
 

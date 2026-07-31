@@ -1,12 +1,10 @@
 ---
-title: "Hidden AWS operational details"
+title: "Cross-AZ, MTU, DynamoDB, and Logs Insights: AWS operational risks"
 date: 2026-07-30
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-
-# Hidden AWS operational details: from unexpected costs to invisible network failures
 
 After working with AWS for a while, I have found a large gap between certificate material and what happens in production. Some incidents create no obvious alert and are not listed among common errors, yet they can make a system unstable or generate substantial service costs.
 

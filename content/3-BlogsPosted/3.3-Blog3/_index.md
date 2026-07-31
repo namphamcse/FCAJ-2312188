@@ -1,12 +1,10 @@
 ---
-title: "Hidden AWS traps"
+title: "NAT Gateway, Glacier, PassRole, and EBS: four AWS traps"
 date: 2026-07-30
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-
-# Hidden AWS traps that official documentation rarely warns about
 
 When I first started learning AWS, I encountered familiar concepts such as EC2, S3, RDS, and standard architectures on slides. Only when operating real systems did I realize that some less-discussed details can lead to significant costs or incidents at the least convenient time.
 

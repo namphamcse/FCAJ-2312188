@@ -1,12 +1,10 @@
 ---
-title: "Những kỹ thuật “ngầm” trên AWS"
+title: "Cross-AZ, MTU, DynamoDB và Logs Insights: rủi ro vận hành AWS"
 date: 2026-07-30
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-
-# Những kỹ thuật “ngầm” trên AWS: từ tiền phạt ẩn đến sự cố mạng vô hình
 
 Khi làm việc với AWS đủ lâu, em nhận ra có khoảng cách lớn giữa kiến thức trong chứng chỉ và những gì xảy ra ở môi trường production. Một số sự cố không tạo cảnh báo rõ ràng, không nằm trong danh sách lỗi phổ biến, nhưng vẫn có thể làm hệ thống chập chờn hoặc phát sinh chi phí dịch vụ lớn.
 

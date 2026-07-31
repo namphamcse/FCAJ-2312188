@@ -1,12 +1,10 @@
 ---
-title: "3 chi tiết “ngách” trên AWS ít ai nói cho bạn biết"
+title: "S3, IMDSv2 và Lambda: 3 vấn đề vận hành AWS cần tránh"
 date: 2026-07-30
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-
-# 3 chi tiết “ngách” trên AWS ít ai nói cho bạn biết, nhưng đụng vào là dính sự cố
 
 Thay vì bàn về các khái niệm vĩ mô, bài viết này tổng hợp ba chi tiết kỹ thuật nhỏ trên AWS. Chúng ít khi xuất hiện trên slide bài giảng nhưng có thể gây chi phí không cần thiết hoặc khiến việc debug kéo dài nhiều ngày.
 
