@@ -21,7 +21,3 @@ The application is separated into frontend, backend, and database layers so that
 3. The frontend calls the API through the ALB.
 4. The ALB routes the request to an ECS Fargate task in a private subnet.
 5. The backend reads from or writes to RDS PostgreSQL.
-
-![VPC architecture](/FCAJ-2312188/images/5-Workshop/vpc.jpg?featherlight=false)
-
-![Security group design](/FCAJ-2312188/images/5-Workshop/security_groups.jpg?featherlight=false)

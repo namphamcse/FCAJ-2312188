@@ -16,6 +16,8 @@ Tạo network foundation cho ứng dụng với hai public subnet dành cho ALB 
 * **Private subnets:** Chứa ECS task và RDS instance; database không có public IP.
 * **Security groups:** Chỉ cho phép traffic theo đúng luồng CloudFront → ALB → ECS → RDS.
 
+![VPC architecture](/FCAJ-2312188/images/5-Workshop/vpc.jpg?featherlight=false)
+
 ![Public subnet 1](/FCAJ-2312188/images/5-Workshop/public_subnet_1.jpg?featherlight=false)
 
 ![Public subnet 2](/FCAJ-2312188/images/5-Workshop/public_subnet_2.jpg?featherlight=false)
@@ -23,6 +25,8 @@ Tạo network foundation cho ứng dụng với hai public subnet dành cho ALB 
 ![Private subnet 1](/FCAJ-2312188/images/5-Workshop/private_subnet_1.jpg?featherlight=false)
 
 ![Private subnet 2](/FCAJ-2312188/images/5-Workshop/private_subnet_2.jpg?featherlight=false)
+
+![Security group design](/FCAJ-2312188/images/5-Workshop/security_groups.jpg?featherlight=false)
 
 #### Nguyên tắc bảo mật
 

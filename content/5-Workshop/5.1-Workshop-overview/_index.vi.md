@@ -21,7 +21,3 @@ pre: " <b> 5.1. </b> "
 3. Frontend gọi API đến ALB.
 4. ALB chuyển request đến ECS Fargate task trong private subnet.
 5. Backend đọc hoặc ghi dữ liệu vào RDS PostgreSQL.
-
-![VPC architecture](/FCAJ-2312188/images/5-Workshop/vpc.jpg?featherlight=false)
-
-![Security group design](/FCAJ-2312188/images/5-Workshop/security_groups.jpg?featherlight=false)
