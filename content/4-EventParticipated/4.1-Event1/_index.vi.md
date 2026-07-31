@@ -57,10 +57,10 @@ Sự kiện giúp em kết nối những nội dung đang học với yêu cầu
 
 ### Một số hình ảnh khi tham gia sự kiện
 
-![Ảnh tập thể AWS Study Tour 2026](/images/event.jpg?featherlight=false)
+![Ảnh tập thể AWS Study Tour 2026](/FCAJ-2312188/images/event.jpg?featherlight=false)
 
 *Ảnh tập thể tại AWS Study Tour 2026.*
 
-![Phiên chia sẻ của diễn giả tại AWS Study Tour 2026](/images/eventt.jpg?featherlight=false)
+![Phiên chia sẻ của diễn giả tại AWS Study Tour 2026](/FCAJ-2312188/images/eventt.jpg?featherlight=false)
 
 *Một phiên chia sẻ trong chương trình AWS Study Tour 2026.*
