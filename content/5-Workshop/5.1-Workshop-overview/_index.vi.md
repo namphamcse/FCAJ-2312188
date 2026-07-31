@@ -14,6 +14,20 @@ pre: " <b> 5.1. </b> "
 * **ALB + ECS Fargate:** ALB nhận HTTP/HTTPS request và điều hướng đến ECS service. Fargate chạy container mà không cần quản lý EC2 server.
 * **RDS PostgreSQL:** Database nằm trong private subnet và chỉ chấp nhận kết nối từ backend.
 
+#### Cấu hình dự án
+
+| Cấu hình | Giá trị |
+|---|---|
+| Ứng dụng | Shopsflow, ứng dụng thương mại điện tử |
+| Frontend | React/Vite static build |
+| Backend | Spring Boot container trên ECS Fargate |
+| Database | Amazon RDS for PostgreSQL |
+| Region triển khai | `us-east-1` |
+| Public entry point | [CloudFront distribution](https://d2m34udjfc5fxq.cloudfront.net/) |
+
+![Kiến trúc AWS Shopsflow](/FCAJ-2312188/images/5-Workshop/architecture.png?featherlight=false)
+*Hình 1. Kiến trúc logic của Shopsflow. Bản triển khai thực tế dùng `us-east-1`; các cấu hình trong những mục sau phản ánh tài nguyên đã triển khai.*
+
 #### Luồng xử lý
 
 1. Người dùng truy cập frontend qua CloudFront.

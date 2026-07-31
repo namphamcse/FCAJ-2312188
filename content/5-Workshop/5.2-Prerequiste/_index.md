@@ -20,12 +20,22 @@ Prepare the AWS CLI, Docker, Git, and the frontend build toolchain before deploy
 * **Private subnets:** Host ECS tasks and the RDS instance; the database has no public IP.
 * **Security groups:** Allow traffic only along the CloudFront → ALB → ECS → RDS path.
 
+#### Deployed network settings
+
+| Resource | Name or CIDR | Availability Zone |
+|---|---|---|
+| VPC | `shopsflow-vpc` | `us-east-1` |
+| Public subnet 1 | `aws-practice-vpc-subnet-public1-us-east-1a` — `10.0.0.0/20` | `us-east-1a` |
+| Public subnet 2 | `aws-practice-vpc-subnet-public2-us-east-1b` — `10.0.16.0/20` | `us-east-1b` |
+| Private subnet 1 | `aws-practice-vpc-subnet-private1-us-east-1a` — `10.0.128.0/20` | `us-east-1a` |
+| Private subnet 2 | `aws-practice-vpc-subnet-private2-us-east-1b` — `10.0.144.0/20` | `us-east-1b` |
+
 #### Configure Internet access and routes
 
-1. Create and attach an Internet Gateway to the VPC.
+1. Create `shopsflow-igw` and attach it to `shopsflow-vpc`.
 2. Create a public route table with `0.0.0.0/0` routed to the Internet Gateway, then associate both public subnets.
-3. For high availability, create one NAT Gateway and associate one Elastic IP address in each public-subnet Availability Zone.
-4. Route each private subnet's Internet-bound traffic through the NAT Gateway in the same Availability Zone when ECS tasks need outbound access, for example to call an external service. A single NAT Gateway is acceptable for a cost-sensitive lab, but it is a deliberate availability trade-off.
+3. Create `shopsflow-nat-a` in public subnet 1 and `shopsflow-nat-b` in public subnet 2, with one Elastic IP address for each NAT Gateway.
+4. Route private subnet 1 through `shopsflow-nat-a` and private subnet 2 through `shopsflow-nat-b` when ECS tasks need outbound access, for example to call the payment provider.
 
 The ALB remains the only inbound public component. ECS tasks and RDS stay private even when the tasks use the NAT Gateway for outbound traffic.
 
@@ -45,7 +55,7 @@ The ALB remains the only inbound public component. ECS tasks and RDS stay privat
 *Figure 5. Second private subnet for high availability.*
 
 ![Security group design](/FCAJ-2312188/images/5-Workshop/security_groups.jpg?featherlight=false)
-*Figure 6. Security group rules between ALB, ECS, and RDS.*
+*Figure 6. Security groups.*
 
 #### Security principles
 

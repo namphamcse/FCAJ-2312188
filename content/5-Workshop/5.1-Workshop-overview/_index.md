@@ -14,6 +14,20 @@ The application is separated into frontend, backend, and database layers so that
 * **ALB + ECS Fargate:** The ALB receives HTTP/HTTPS requests and routes them to an ECS service. Fargate runs containers without managing EC2 servers.
 * **RDS PostgreSQL:** The database is placed in private subnets and accepts connections only from the backend.
 
+#### Project settings
+
+| Setting | Value |
+|---|---|
+| Application | Shopsflow, an e-commerce application |
+| Frontend | React/Vite static build |
+| Backend | Spring Boot container on ECS Fargate |
+| Database | Amazon RDS for PostgreSQL |
+| Deployment Region | `us-east-1` |
+| Public entry point | [CloudFront distribution](https://d2m34udjfc5fxq.cloudfront.net/) |
+
+![Shopsflow AWS architecture](/FCAJ-2312188/images/5-Workshop/architecture.png?featherlight=false)
+*Figure 1. Logical architecture of Shopsflow. The actual deployment uses `us-east-1`; the project settings in the following sections reflect the deployed resources.*
+
 #### Request flow
 
 1. A user opens the frontend through CloudFront.

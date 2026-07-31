@@ -20,12 +20,22 @@ Chuẩn bị AWS CLI, Docker, Git và công cụ build frontend trước khi tri
 * **Private subnets:** Chứa ECS task và RDS instance; database không có public IP.
 * **Security groups:** Chỉ cho phép traffic theo đúng luồng CloudFront → ALB → ECS → RDS.
 
+#### Cấu hình network đã triển khai
+
+| Tài nguyên | Tên hoặc CIDR | Availability Zone |
+|---|---|---|
+| VPC | `shopsflow-vpc` | `us-east-1` |
+| Public subnet 1 | `aws-practice-vpc-subnet-public1-us-east-1a` — `10.0.0.0/20` | `us-east-1a` |
+| Public subnet 2 | `aws-practice-vpc-subnet-public2-us-east-1b` — `10.0.16.0/20` | `us-east-1b` |
+| Private subnet 1 | `aws-practice-vpc-subnet-private1-us-east-1a` — `10.0.128.0/20` | `us-east-1a` |
+| Private subnet 2 | `aws-practice-vpc-subnet-private2-us-east-1b` — `10.0.144.0/20` | `us-east-1b` |
+
 #### Cấu hình Internet access và route
 
-1. Tạo và attach Internet Gateway vào VPC.
+1. Tạo `shopsflow-igw` và attach vào `shopsflow-vpc`.
 2. Tạo public route table với route `0.0.0.0/0` đi qua Internet Gateway, sau đó associate với hai public subnet.
-3. Để có tính sẵn sàng cao, tạo một NAT Gateway và gắn một Elastic IP trong mỗi Availability Zone của public subnet.
-4. Route Internet-bound traffic của mỗi private subnet qua NAT Gateway trong cùng Availability Zone khi ECS task cần outbound access, ví dụ khi gọi một dịch vụ bên ngoài. Một NAT Gateway vẫn phù hợp cho lab cần tiết kiệm chi phí, nhưng đây là một đánh đổi về tính sẵn sàng.
+3. Tạo `shopsflow-nat-a` trong public subnet 1 và `shopsflow-nat-b` trong public subnet 2, mỗi NAT Gateway gắn một Elastic IP.
+4. Route private subnet 1 qua `shopsflow-nat-a` và private subnet 2 qua `shopsflow-nat-b` khi ECS task cần outbound access, ví dụ để gọi payment provider.
 
 ALB vẫn là thành phần public duy nhất nhận inbound traffic. ECS task và RDS vẫn ở private subnet, kể cả khi ECS task sử dụng NAT Gateway để đi ra ngoài.
 

@@ -8,7 +8,7 @@ pre: " <b> 5.4.4. </b> "
 
 #### Create the Application Load Balancer
 
-Create an internet-facing ALB across two public subnets. Create an HTTP or HTTPS listener, an IP target group for ECS Fargate, and a backend health-check endpoint. Attach the ECS service to the target group so tasks register automatically.
+Create the internet-facing ALB `shopsflow-alb` across the two public subnets. Create an HTTP `80` listener (and HTTPS `443` when a certificate is configured), an IP target group on port `8080` for ECS Fargate, and a backend health-check endpoint. Attach the ECS service to the target group so tasks register automatically.
 
 ![Application Load Balancer](/FCAJ-2312188/images/5-Workshop/alb.jpg?featherlight=false)
 

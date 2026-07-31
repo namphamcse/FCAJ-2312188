@@ -15,6 +15,17 @@ pre: " <b> 5.3.2. </b> "
 5. Configure SPA fallback so client-side routes return `index.html` when appropriate.
 6. When the distribution is deployed, open the frontend through the CloudFront domain name.
 
+#### Deployed distribution settings
+
+| Setting | Value |
+|---|---|
+| Distribution | `fe cloudfront` |
+| Public domain | `d2m34udjfc5fxq.cloudfront.net` |
+| Default origin | Private S3 bucket containing the React/Vite `dist` artifacts |
+| API origin | Internet-facing `shopsflow-alb` |
+| API behavior | `/api/*` forwarded to the ALB |
+| Default root object | `index.html` |
+
 When the frontend changes, create an invalidation for files that need to be released again.
 
 ![CloudFront frontend distribution](/FCAJ-2312188/images/5-Workshop/fe_cloudfront.jpg?featherlight=false)
