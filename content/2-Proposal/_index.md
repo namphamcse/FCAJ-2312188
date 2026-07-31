@@ -1,115 +1,97 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-07-30
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+## Shopsflow
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+### Proposal for an AWS container-based e-commerce application
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+#### 1. Executive summary
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+Shopsflow is a full-stack e-commerce application with a React/Vite frontend, a Spring Boot backend, PostgreSQL data storage, and an online payment flow. This proposal separates the frontend, application runtime, and database so that each layer has a clear responsibility, security boundary, and deployment path.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+The frontend is delivered from Amazon S3 through Amazon CloudFront. The backend runs as a container on Amazon ECS Fargate behind an Application Load Balancer (ALB), while Amazon RDS for PostgreSQL stores application data privately. Amazon ECR stores versioned backend images; Amazon CloudWatch supports logs and operational checks.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+#### 2. Problem statement and proposed solution
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+Running the complete application on one public server would couple static delivery, API runtime, and database access. It would also expose more infrastructure than necessary and make deployment, scaling, troubleshooting, and cost review harder.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+The proposed solution uses a three-tier AWS architecture:
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+* **Frontend delivery:** CloudFront serves the React/Vite build from a private S3 bucket.
+* **Application tier:** An internet-facing ALB routes API requests to Spring Boot containers on ECS Fargate in private subnets.
+* **Data tier:** RDS PostgreSQL remains private and accepts port `5432` only from the ECS security group.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+This approach keeps the public entry point limited to CloudFront and the ALB, while backend tasks and the database do not have public IP addresses.
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+#### 3. Solution architecture
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+![Shopsflow AWS architecture](/FCAJ-2312188/images/5-Workshop/architecture.png?featherlight=false)
+*Figure 1. Logical architecture of Shopsflow. The deployed configuration uses Region `us-east-1`.*
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+**Request flow**
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+1. A user opens the website through CloudFront.
+2. CloudFront retrieves the React/Vite static artifacts from S3.
+3. Requests to `/api/*` are forwarded by CloudFront to the ALB.
+4. The ALB routes healthy requests to ECS Fargate tasks in private subnets.
+5. The Spring Boot backend reads and writes data in RDS PostgreSQL.
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+**Payment flow**
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+The backend creates payment parameters, calls the payment provider through the NAT Gateway, and returns the payment URL to the user. After the provider responds, the backend validates the signature and payment status before updating the order.
 
-Total: $0.7/month, $8.40/12 months
+#### 4. AWS services and project settings
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+| Area | Service and configuration |
+|---|---|
+| Region | `us-east-1` |
+| Network | `shopsflow-vpc` with two public and two private subnets across `us-east-1a` and `us-east-1b` |
+| Frontend | Amazon S3 private origin and CloudFront distribution `fe cloudfront` |
+| Public domain | `d2m34udjfc5fxq.cloudfront.net` |
+| API entry point | Internet-facing ALB `shopsflow-alb` |
+| Container registry | Amazon ECR repository `shopsflow-repo` |
+| Compute | ECS cluster `shopsflow-cluster`, Fargate, `awsvpc`, private subnets, public IP disabled |
+| Container port | `8080`, with an IP target group |
+| Database | RDS PostgreSQL `database-shopsflow`, private DB subnet group, port `5432` |
+| Observability | CloudWatch log group `/shopsflow/ecs/backend` through the `awslogs` driver |
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+#### 5. Security and operations
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+Security groups enforce the traffic path `CloudFront → ALB → ECS → RDS`:
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+* `alb-sg` accepts HTTP `80` and HTTPS `443`, then sends backend traffic only to `ecs-sg` on port `8080`.
+* `ecs-sg` accepts port `8080` only from `alb-sg`.
+* `rds-sg` accepts PostgreSQL port `5432` only from `ecs-sg`.
 
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+ECS uses separate task execution and task roles. The execution role pulls images from ECR and delivers logs to CloudWatch; the task role contains only application permissions. Database credentials are supplied during deployment rather than stored in source code.
+
+CloudWatch is used to review ECS task starts and stops, Spring Boot errors, database connectivity, payment failures, ALB target health, and deployment revisions.
+
+#### 6. Implementation plan
+
+1. Create the VPC, subnets, Internet Gateway, NAT Gateways, route tables, and security groups.
+2. Create the RDS PostgreSQL instance and private DB subnet group.
+3. Build the backend image, push it to ECR, and create the ECS Fargate service with ALB health checks.
+4. Build the React/Vite frontend, upload the `dist` artifacts to S3, and configure CloudFront with the ALB `/api/*` behavior.
+5. Configure CloudWatch logging, validate payment and API flows, then review cost and resource usage.
+
+Each backend release produces a new ECR image and ECS task-definition revision. The ECS service performs a health-checked rollout rather than changing files inside a running container.
+
+#### 7. Risks and mitigation
+
+| Risk | Mitigation |
+|---|---|
+| Unhealthy ECS tasks | Use ALB health checks, ECS stopped reasons, and CloudWatch Logs to isolate startup, routing, or database errors. |
+| Database exposure | Keep RDS private and restrict port `5432` to `ecs-sg`. |
+| Incorrect payment status | Validate the provider signature and status on the backend; do not trust client redirects alone. |
+| Cost left after testing | Review NAT Gateway, ALB, Fargate, RDS, CloudWatch, and data-transfer usage; clean up in dependency order. |
+| Failed redeployment | Keep versioned ECR images and use a new task-definition revision for each release. |
+
+#### 8. Expected outcomes
+
+The proposal delivers a deployable e-commerce architecture with a CDN-backed frontend, private containerized backend, private PostgreSQL database, health-checked API routing, structured logging, and a controlled payment flow. It also provides a clear operational model for validating releases, troubleshooting failures, and cleaning up resources to avoid unnecessary cost.

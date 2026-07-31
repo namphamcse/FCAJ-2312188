@@ -16,7 +16,7 @@ The ALB is placed in public subnets to receive Internet traffic. ECS Fargate tas
 * **`ecs-sg`:** allows TCP `8080` only from `alb-sg`; allows PostgreSQL `5432` to the database tier and HTTPS outbound for AWS or payment endpoints.
 * **`rds-sg`:** allows TCP `5432` only from `ecs-sg`.
 
-Use security-group references rather than CIDR ranges for the ECS and RDS inbound rules. The deployed application uses ALB listener ports `80` and `443`, backend port `8080`, and PostgreSQL port `5432`.
+Use security-group references rather than CIDR ranges for the ECS and RDS inbound rules. The ALB security group permits ports `80` and `443`; the backend uses port `8080`, and PostgreSQL uses port `5432`. Configure an HTTPS listener only when a certificate is available.
 
 ![ALB security group](/FCAJ-2312188/images/5-Workshop/alb_sg_inbound_rules.jpg?featherlight=false)
 *Figure 1. Inbound rules for the Application Load Balancer security group.*

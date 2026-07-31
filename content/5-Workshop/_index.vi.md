@@ -14,3 +14,5 @@ Workshop này triển khai một ứng dụng web theo kiến trúc cloud-native
 2. [Chuẩn bị VPC và Security Group](5.2-Prerequiste/)
 3. [Triển khai frontend với S3 và CloudFront](5.3-S3-vpc/)
 4. [Triển khai backend với ALB, ECS Fargate và RDS PostgreSQL](5.4-S3-onprem/)
+5. [IAM, CloudWatch, payment flow và validation](5.5-Policy/)
+6. [Dọn dẹp tài nguyên](5.6-Cleanup/)

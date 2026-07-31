@@ -16,7 +16,7 @@ ALB được đặt trong public subnet để nhận traffic từ Internet. ECS 
 * **`ecs-sg`:** chỉ cho phép TCP `8080` từ `alb-sg`; cho phép PostgreSQL `5432` đến database tier và HTTPS outbound đến AWS hoặc payment endpoint.
 * **`rds-sg`:** chỉ cho phép TCP `5432` từ `ecs-sg`.
 
-Sử dụng security-group reference thay vì CIDR range cho inbound rule của ECS và RDS. Ứng dụng đã triển khai dùng ALB listener port `80` và `443`, backend port `8080`, cùng PostgreSQL port `5432`.
+Sử dụng security-group reference thay vì CIDR range cho inbound rule của ECS và RDS. ALB security group cho phép port `80` và `443`; backend dùng port `8080`, còn PostgreSQL dùng port `5432`. Chỉ cấu hình HTTPS listener khi đã có certificate.
 
 ![ALB security group](/FCAJ-2312188/images/5-Workshop/alb_sg_inbound_rules.jpg?featherlight=false)
 *Hình 1. Inbound rule của security group dành cho Application Load Balancer.*
