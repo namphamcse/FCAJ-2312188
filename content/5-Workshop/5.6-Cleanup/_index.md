@@ -52,8 +52,3 @@ Delete custom ECS execution and task roles only after ECS no longer uses them. D
 
 After the ALB, RDS, ECS network interfaces, and NAT Gateways have been removed, delete the custom route tables, detach and delete `shopsflow-igw`, delete the subnets and custom security groups, and finally delete `shopsflow-vpc`.
 
-#### 10. Billing check
-
-Review Billing, Cost Explorer, and the relevant resource pages to make sure no lab workload is still running unexpectedly.
-
-The workshop shows that managed services reduce host-management work, but routes, IAM permissions, health checks, payment callbacks, logs, and cost remain operational responsibilities.

@@ -52,8 +52,3 @@ Chỉ delete custom ECS execution role và task role khi ECS không còn sử d�
 
 Khi ALB, RDS, ECS network interface và NAT Gateway đã được xóa, lần lượt delete custom route table, detach rồi delete `shopsflow-igw`, xóa subnet cùng custom security group, và cuối cùng delete `shopsflow-vpc`.
 
-#### 10. Kiểm tra Billing
-
-Kiểm tra Billing, Cost Explorer và các resource page liên quan để bảo đảm không còn lab workload nào chạy ngoài ý muốn.
-
-Workshop cho thấy managed service giảm công việc quản trị host, nhưng route, IAM permission, health check, payment callback, log và chi phí vẫn là trách nhiệm vận hành.
