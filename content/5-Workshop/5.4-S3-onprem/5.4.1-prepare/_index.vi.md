@@ -26,7 +26,3 @@ Sử dụng security-group reference thay vì CIDR range cho inbound rule của 
 
 ![RDS security group](/FCAJ-2312188/images/5-Workshop/rds_sg_inbound_rules.jpg?featherlight=false)
 *Hình 3. Inbound rule của security group dành cho RDS PostgreSQL.*
-
-#### Xác minh network boundary
-
-Hãy kiểm tra để chắc chắn ECS task không có public IP, ALB được liên kết với cả hai public subnet và RDS instance nằm trong private subnet. Từ bên ngoài Internet, client không thể kết nối trực tiếp đến ECS container hoặc PostgreSQL database.

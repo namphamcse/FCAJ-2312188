@@ -26,7 +26,3 @@ Use security-group references rather than CIDR ranges for the ECS and RDS inboun
 
 ![RDS security group](/FCAJ-2312188/images/5-Workshop/rds_sg_inbound_rules.jpg?featherlight=false)
 *Figure 3. Inbound rules for the RDS PostgreSQL security group.*
-
-#### Verify the network boundary
-
-Confirm that the ECS task has no public IP, the ALB is associated with both public subnets, and the RDS instance is in private subnets. External clients should not be able to connect directly to the ECS container or PostgreSQL database.
