@@ -1,5 +1,5 @@
 ---
-title: "Tạo ECR repository và ECS Fargate service"
+title: "Tạo ECR repository và ECS task definition"
 date: 2026-07-30
 weight: 2
 chapter: false
@@ -15,25 +15,14 @@ pre: " <b> 5.4.2. </b> "
 ![ECR backend image](/FCAJ-2312188/images/5-Workshop/ecr_image.jpg?featherlight=false)
 *Hình 1. Container image của backend được lưu trong Amazon ECR.*
 
-#### Tạo ECS Fargate service
+#### Tạo ECS task definition
 
-Tạo ECS cluster `shopsflow-cluster`, sau đó tạo task definition sử dụng image trong `shopsflow-repo`. Thiết lập CPU, memory, container port `8080`, hai private subnet và `ecs-sg`. Cuối cùng, tạo service với số lượng task phù hợp và gắn service vào target group của ALB.
+Tạo ECS cluster `shopsflow-cluster`, sau đó tạo task definition sử dụng image trong `shopsflow-repo`. Thiết lập CPU, memory, container port `8080` cùng task execution role và task role đã chuẩn bị ở mục 5.2.
 
-Đặt network mode của task definition là `awsvpc`, cấu hình `awslogs` log driver và dùng IP target group vì Fargate task có network interface riêng. Tắt public IP assignment cho service.
+Đặt network mode của task definition là `awsvpc` và cấu hình `awslogs` log driver. Network setting của service, thông tin kết nối RDS và ALB target group sẽ được bổ sung sau khi các tài nguyên này đã sẵn sàng.
 
-| Cấu hình service | Giá trị |
+| Cấu hình task definition | Giá trị |
 |---|---|
-| Launch type | Fargate |
 | Network mode | `awsvpc` |
-| Container và target port | `8080` |
-| Target type | `ip` |
-| Public IP | Disabled |
-| Desired task count | `1` cho bản triển khai lab hiện tại |
+| Container port | `8080` |
 | Logging | CloudWatch qua `awslogs` driver |
-
-![ECS cluster and service](/FCAJ-2312188/images/5-Workshop/ecs_cluster_service.jpg?featherlight=false)
-*Hình 2. ECS Fargate cluster và backend service.*
-
-#### Kiểm tra triển khai
-
-Chờ đến khi service triển khai ổn định. Khi ALB target chuyển sang trạng thái healthy, điều đó cho thấy task đang chạy, health-check path phản hồi đúng và ALB có thể kết nối đến backend qua port `8080`.

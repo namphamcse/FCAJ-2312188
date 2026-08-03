@@ -21,18 +21,4 @@ Create the RDS PostgreSQL instance `database-shopsflow` in a DB subnet group spa
 
 ![RDS PostgreSQL instance](/FCAJ-2312188/images/5-Workshop/rds.jpg?featherlight=false)
 
-The backend can connect to the database only on port `5432` from an ECS task. Do not hard-code database credentials in source code.
-
-#### Validate the database connection
-
-At deployment time, pass the RDS endpoint, port, database name, username, and password to the backend. Once the ECS task starts, check the application logs and API responses. A connection timeout usually points to a network or security-group issue, while an authentication error usually means the database name or credentials are incorrect.
-
-Run the required database migrations, then test an API operation that reads and writes data before marking the backend deployment as complete.
-
-The Spring Boot datasource settings use the deployed RDS endpoint:
-
-```properties
-SPRING_DATASOURCE_URL=jdbc:postgresql://<rds-endpoint>:5432/<database>
-SPRING_DATASOURCE_USERNAME=<username>
-SPRING_DATASOURCE_PASSWORD=<password>
-```
+The backend can connect to the database only on port `5432` from an ECS task. Do not hard-code database credentials in source code; use the endpoint and credentials when deploying the ECS service in section 5.4.5.

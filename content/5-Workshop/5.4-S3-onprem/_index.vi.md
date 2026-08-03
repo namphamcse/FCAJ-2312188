@@ -13,6 +13,7 @@ Backend được đóng gói thành Docker image, lưu trong Amazon ECR và ch�
 #### Nội dung
 
 1. [Chuẩn bị network và Security Group](5.4.1-prepare/)
-2. [Tạo ECR repository và ECS Fargate service](5.4.2-create-interface-enpoint/)
+2. [Tạo ECR repository và ECS task definition](5.4.2-create-interface-enpoint/)
 3. [Tạo RDS PostgreSQL](5.4.3-test-endpoint/)
-4. [Cấu hình ALB và kiểm thử backend](5.4.4-dns-simulation/)
+4. [Cấu hình Application Load Balancer](5.4.4-dns-simulation/)
+5. [Triển khai ECS Fargate service](5.4.5-deploy-ecs/)

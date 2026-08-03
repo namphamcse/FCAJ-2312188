@@ -13,6 +13,7 @@ The backend is packaged as a Docker image, stored in Amazon ECR, and run by an E
 #### Contents
 
 1. [Prepare the network and security groups](5.4.1-prepare/)
-2. [Create the ECR repository and ECS Fargate service](5.4.2-create-interface-enpoint/)
+2. [Create the ECR repository and ECS task definition](5.4.2-create-interface-enpoint/)
 3. [Create RDS PostgreSQL](5.4.3-test-endpoint/)
-4. [Configure the ALB and test the backend](5.4.4-dns-simulation/)
+4. [Configure the Application Load Balancer](5.4.4-dns-simulation/)
+5. [Deploy the ECS Fargate service](5.4.5-deploy-ecs/)

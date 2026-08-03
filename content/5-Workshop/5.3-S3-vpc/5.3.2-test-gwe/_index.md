@@ -11,8 +11,8 @@ pre: " <b> 5.3.2. </b> "
 1. Create a CloudFront distribution and select the bucket you just created as its origin.
 2. Configure Origin Access Control so CloudFront can read objects from the private bucket.
 3. Set the default root object to `index.html`.
-4. Add the ALB as a second origin, then create a `/api/*` behavior that forwards the required API methods, headers, and query strings.
-5. Configure SPA fallback so appropriate client-side routes return `index.html`.
+4. Configure SPA fallback so appropriate client-side routes return `index.html`.
+5. After the ALB is configured in section 5.4.4, return here to add it as a second origin and create a `/api/*` behavior that forwards the required API methods, headers, and query strings.
 6. Once the distribution has finished deploying, open the CloudFront domain name to check the frontend.
 
 #### Deployed distribution settings
