@@ -32,10 +32,10 @@ Prepare the AWS CLI, Docker, Git, and the frontend build toolchain before deploy
 
 #### Configure Internet access and routes
 
-1. Create `shopsflow-igw` and attach it to `shopsflow-vpc`.
-2. Create a public route table with `0.0.0.0/0` routed to the Internet Gateway, then associate both public subnets.
-3. Create `shopsflow-nat-a` in public subnet 1 and `shopsflow-nat-b` in public subnet 2, with one Elastic IP address for each NAT Gateway.
-4. Route private subnet 1 through `shopsflow-nat-a` and private subnet 2 through `shopsflow-nat-b` when ECS tasks need outbound access, for example to call the payment provider.
+1. Create the `shopsflow-igw` Internet Gateway, then attach it to `shopsflow-vpc`.
+2. Create a public route table with `0.0.0.0/0` pointing to the Internet Gateway, then associate it with both public subnets.
+3. Create one NAT Gateway in each public subnet: `shopsflow-nat-a` in subnet 1 and `shopsflow-nat-b` in subnet 2. Assign a separate Elastic IP address to each gateway.
+4. If ECS tasks need outbound access—for example, to call the payment provider—route private subnet 1 through `shopsflow-nat-a` and private subnet 2 through `shopsflow-nat-b`.
 
 The ALB remains the only inbound public component. ECS tasks and RDS stay private even when the tasks use the NAT Gateway for outbound traffic.
 

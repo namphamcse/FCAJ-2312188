@@ -8,10 +8,10 @@ pre: " <b> 5.3.1. </b> "
 
 #### Create the S3 bucket
 
-1. Install dependencies and build the frontend. For this React/Vite application, run `npm install` and `npm run build`.
-2. Open the Amazon S3 Console and create a uniquely named bucket.
-3. Keep Block Public Access enabled so that the bucket is not directly reachable from the Internet.
-4. Upload the generated `dist` output, including `index.html`, CSS, JavaScript, and static assets.
+1. Start by installing dependencies and building the frontend. For this React/Vite application, run `npm install`, then `npm run build`.
+2. Open the Amazon S3 Console and create a bucket with a unique name.
+3. Keep Block Public Access enabled so no one can reach the bucket directly from the Internet.
+4. Upload the newly generated `dist` directory, including `index.html`, CSS, JavaScript, and static assets.
 
 The bucket is the CloudFront origin; users do not access S3 objects directly.
 

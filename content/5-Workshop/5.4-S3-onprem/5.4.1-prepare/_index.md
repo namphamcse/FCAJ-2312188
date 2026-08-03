@@ -29,4 +29,4 @@ Use security-group references rather than CIDR ranges for the ECS and RDS inboun
 
 #### Verify the network boundary
 
-Confirm that the ECS task has no public IP, the ALB is associated with both public subnets, and the RDS instance is associated with private subnets. An external client must not be able to connect directly to the ECS container or PostgreSQL database.
+Confirm that the ECS task has no public IP, the ALB is associated with both public subnets, and the RDS instance is in private subnets. External clients should not be able to connect directly to the ECS container or PostgreSQL database.

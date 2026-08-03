@@ -8,16 +8,16 @@ pre: " <b> 5.4.2. </b> "
 
 #### Đưa backend image lên ECR
 
-1. Tạo ECR private repository `shopsflow-repo`.
-2. Build Docker image của backend.
-3. Authenticate Docker client với ECR, tag image và push image lên repository.
+1. Tạo private ECR repository có tên `shopsflow-repo`.
+2. Build Docker image cho backend.
+3. Xác thực Docker client với ECR, gắn tag cho image rồi push image lên repository.
 
 ![ECR backend image](/FCAJ-2312188/images/5-Workshop/ecr_image.jpg?featherlight=false)
 *Hình 1. Container image của backend được lưu trong Amazon ECR.*
 
 #### Tạo ECS Fargate service
 
-Tạo ECS cluster `shopsflow-cluster` và task definition sử dụng ECR image từ `shopsflow-repo`. Cấu hình CPU, memory, container port `8080`, hai private subnet và `ecs-sg`. Sau đó tạo service với số lượng task mong muốn và gắn target group của ALB.
+Tạo ECS cluster `shopsflow-cluster`, sau đó tạo task definition sử dụng image trong `shopsflow-repo`. Thiết lập CPU, memory, container port `8080`, hai private subnet và `ecs-sg`. Cuối cùng, tạo service với số lượng task phù hợp và gắn service vào target group của ALB.
 
 Đặt network mode của task definition là `awsvpc`, cấu hình `awslogs` log driver và dùng IP target group vì Fargate task có network interface riêng. Tắt public IP assignment cho service.
 
@@ -36,4 +36,4 @@ Tạo ECS cluster `shopsflow-cluster` và task definition sử dụng ECR image 
 
 #### Kiểm tra triển khai
 
-Chờ service deployment ổn định. ALB target ở trạng thái healthy xác nhận task đang chạy, health-check path phản hồi và ALB có thể kết nối đến backend qua port `8080`.
+Chờ đến khi service triển khai ổn định. Khi ALB target chuyển sang trạng thái healthy, điều đó cho thấy task đang chạy, health-check path phản hồi đúng và ALB có thể kết nối đến backend qua port `8080`.

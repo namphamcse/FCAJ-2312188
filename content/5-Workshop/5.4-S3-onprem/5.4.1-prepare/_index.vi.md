@@ -29,4 +29,4 @@ Sử dụng security-group reference thay vì CIDR range cho inbound rule của 
 
 #### Xác minh network boundary
 
-Kiểm tra ECS task không có public IP, ALB được associate với cả hai public subnet và RDS instance được associate với private subnet. Client bên ngoài không được phép kết nối trực tiếp vào ECS container hoặc PostgreSQL database.
+Hãy kiểm tra để chắc chắn ECS task không có public IP, ALB được liên kết với cả hai public subnet và RDS instance nằm trong private subnet. Từ bên ngoài Internet, client không thể kết nối trực tiếp đến ECS container hoặc PostgreSQL database.

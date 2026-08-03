@@ -32,10 +32,10 @@ Chuẩn bị AWS CLI, Docker, Git và công cụ build frontend trước khi tri
 
 #### Cấu hình Internet access và route
 
-1. Tạo `shopsflow-igw` và attach vào `shopsflow-vpc`.
-2. Tạo public route table với route `0.0.0.0/0` đi qua Internet Gateway, sau đó associate với hai public subnet.
-3. Tạo `shopsflow-nat-a` trong public subnet 1 và `shopsflow-nat-b` trong public subnet 2, mỗi NAT Gateway gắn một Elastic IP.
-4. Route private subnet 1 qua `shopsflow-nat-a` và private subnet 2 qua `shopsflow-nat-b` khi ECS task cần outbound access, ví dụ để gọi payment provider.
+1. Tạo Internet Gateway `shopsflow-igw`, rồi gắn gateway này vào `shopsflow-vpc`.
+2. Tạo một public route table với route `0.0.0.0/0` trỏ đến Internet Gateway, sau đó liên kết route table với hai public subnet.
+3. Trong mỗi public subnet, tạo một NAT Gateway: `shopsflow-nat-a` ở subnet 1 và `shopsflow-nat-b` ở subnet 2. Mỗi NAT Gateway cần một Elastic IP riêng.
+4. Khi ECS task cần kết nối ra ngoài, chẳng hạn để gọi payment provider, hãy định tuyến private subnet 1 qua `shopsflow-nat-a` và private subnet 2 qua `shopsflow-nat-b`.
 
 ALB vẫn là thành phần public duy nhất nhận inbound traffic. ECS task và RDS vẫn ở private subnet, kể cả khi ECS task sử dụng NAT Gateway để đi ra ngoài.
 

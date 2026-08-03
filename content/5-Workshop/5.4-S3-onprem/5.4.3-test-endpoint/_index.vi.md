@@ -8,7 +8,7 @@ pre: " <b> 5.4.3. </b> "
 
 #### Cấu hình database
 
-Tạo RDS PostgreSQL instance `database-shopsflow` trong DB subnet group sử dụng hai private subnet. Tắt public access, gắn `rds-sg` và cấu hình database name, master username cùng mật khẩu. Lưu endpoint và port `5432` để backend sử dụng qua environment variable hoặc secret.
+Tạo RDS PostgreSQL instance `database-shopsflow` trong DB subnet group gồm hai private subnet. Tắt public access, gắn `rds-sg`, rồi thiết lập database name, master username và mật khẩu. Lưu lại endpoint cùng port `5432` để backend sử dụng qua environment variable hoặc secret.
 
 | Cấu hình database | Giá trị |
 |---|---|
@@ -23,9 +23,9 @@ Tạo RDS PostgreSQL instance `database-shopsflow` trong DB subnet group sử d�
 
 #### Xác thực kết nối database
 
-Truyền RDS endpoint, port, database name, username và password cho backend tại thời điểm triển khai. Sau khi ECS task khởi động, kiểm tra application log và API response. Connection timeout thường là lỗi network hoặc security group, còn authentication error thường do database name hoặc credential không chính xác.
+Khi triển khai backend, truyền vào RDS endpoint, port, database name, username và password. Sau khi ECS task khởi động, kiểm tra application log và API response. Lỗi connection timeout thường liên quan đến network hoặc security group; còn authentication error thường xuất phát từ database name hoặc credential chưa chính xác.
 
-Chạy database migration cần thiết và thử một API operation đọc–ghi dữ liệu trước khi xem backend đã được triển khai hoàn tất.
+Chạy các database migration cần thiết, rồi thử một API operation đọc–ghi dữ liệu trước khi xác nhận backend đã triển khai hoàn tất.
 
 Cấu hình datasource của Spring Boot sử dụng RDS endpoint đã triển khai:
 
